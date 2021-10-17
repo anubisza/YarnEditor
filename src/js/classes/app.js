@@ -394,22 +394,25 @@ export var App = function(name, version) {
 
   this.validateTitle = function() {
     var enteredValue = document.getElementById('editorTitle').value;
-    var editorTitle = $('#editorTitle');
+    var editorTitleValidation = $('#editorTitleValidation');
     if (
       self.getOtherNodeTitles().includes(enteredValue) ||
       self.titleExistsTwice(enteredValue)
     ) {
-      editorTitle.attr('class', 'title title-error');
-      editorTitle.attr('title', 'Another node has the same title');
+      editorTitleValidation.show();
+      editorTitleValidation.attr('class', 'title title-error');
+      editorTitleValidation.html("Another node has the same title.");
+
     } else if (!RegExp('^[a-z0-9]+$', 'i').test(enteredValue)) {
-      editorTitle.attr('class', 'title title-error');
-      editorTitle.attr(
-        'title',
-        'Only upper or lower case letters and numbers are allowed in a node title.'
-      );
+      editorTitleValidation.show();
+      editorTitleValidation.attr('class', 'title title-error');
+      editorTitleValidation.html("Only upper or lower case letters and numbers are allowed in a node title.");
+
     } else {
-      editorTitle.removeAttr('title');
-      editorTitle.removeClass('title-error');
+      editorTitleValidation.removeAttr('title');
+      editorTitleValidation.removeClass('title-error');
+      editorTitleValidation.hide();
+      editorTitleValidation.html("ok");
     }
   };
 

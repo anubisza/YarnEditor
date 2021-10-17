@@ -183,6 +183,7 @@
 
       <div id="editor-form" class="form">
         <input type="text" id="editorTitle" class="title" oninput="app.validateTitle()" data-bind="value: app.editing().title;" onfocus="app.togglePreviewMode(true)" placeholder="Title">
+        <span id="editorTitleValidation">Validation</span>
         <input type="text" id="editorTags" data-bind="value: app.editing().tags;" onfocus="app.togglePreviewMode(true)" placeholder="Tags(use spaces)">
 
         <div id="bbcodeToolbar" class="bbcode-toolbar">
